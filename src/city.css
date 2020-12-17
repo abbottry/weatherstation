@@ -1,0 +1,48 @@
+.city {
+  margin: 1em 0;
+  border-radius: 0;
+  box-shadow: #444 0.1em 0.1em 0.2em;
+}
+
+.city > .cityHeader {
+  display: flex;
+  margin: 0;
+  padding: 0.4em 10px;
+  cursor: pointer;
+  border-bottom: 4px solid #08b0e2;
+  font-weight: normal;
+}
+
+.city > .cityHeader > img {
+  max-height: 1em;
+  margin-right: 1em;
+  align-self: center;
+}
+
+.city > .cityHeader > div p {
+  margin: 0.2em 0;
+  font-size: 1.2em;
+}
+
+.city > .cityHeader p:first-child {
+  font-weight: bold;
+}
+
+.city .cityHeader > img.cityExpanded {
+  transform: rotate(0.25turn);
+}
+
+.city > .cityBody {
+  padding-left: 10px;
+}
+
+.city > .cityBody > div {
+  margin: 0.7em 0;
+}
+
+@media (min-width: 1000px) {
+  .city > .cityBody {
+    display: flex;
+    justify-content: space-around;
+  }
+}

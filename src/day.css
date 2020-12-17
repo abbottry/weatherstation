@@ -1,0 +1,29 @@
+.day > div {
+  display: flex;
+}
+
+.day > .date {
+  font-weight: bold;
+  margin: 0 0 0.5em;
+}
+
+.day > div > img {
+  align-self: center;
+}
+
+.day > div p {
+  margin: 0.1em 0;
+}
+
+.day > div p > svg {
+  margin-right: 0.2em;
+}
+
+.day > .currentTemp {
+  font-weight: bold;
+  margin: 0 0 0.5em;
+}
+
+.day > .currentTemp > .data {
+  font-weight: normal;
+}

@@ -1,0 +1,42 @@
+.app {
+  width: 90%;
+  margin-left: 5%;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+.tmpMessage {
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+  border-radius: 0;
+  box-shadow: #444 0.1em 0.1em 0.2em;
+  border-bottom: 4px solid coral;
+}
+
+@media (min-width: 1200px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .app {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 375px) {
+  .app {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 320px) {
+  .app {
+    font-size: 0.6em;
+  }
+}

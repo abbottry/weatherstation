@@ -1,0 +1,68 @@
+.searchForm {
+  display: flex;
+  margin: 1em 0;
+}
+
+.searchForm > input,
+.searchForm > button {
+  -webkit-appearance: none; /* Remove iOS safari styling */
+  background: white;
+  outline: none;
+  margin: 0;
+  border: 1px solid #afafaf;
+  border-radius: 0;
+}
+
+.searchForm input {
+  padding: 0.4em 0.7em;
+  font-size: 1.5em;
+  flex-grow: 3;
+  box-shadow: inset 0 0;
+  transition: box-shadow 200ms ease-out;
+}
+
+.searchForm input:focus {
+  box-shadow: inset 0 0 2px black;
+}
+
+.searchForm > button {
+  flex-grow: 1;
+  margin-left: -1px;
+  cursor: pointer;
+  transition: background 200ms ease-out;
+}
+
+.searchForm > button:hover {
+  background: hsl(0, 0%, 95%);
+}
+
+.searchForm > button:active {
+  box-shadow: inset 0 0 2px black;
+}
+
+.searchForm > button:not(.searching) > svg:last-child {
+  display: none;
+}
+
+.searchForm > button.searching > svg:first-child {
+  display: none;
+}
+
+.searchForm > button.searching > svg:last-child {
+  animation: spin360 infinite 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes spin360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 800px) {
+  .searchForm {
+    max-width: 500px;
+  }
+}

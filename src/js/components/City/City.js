@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import { fiveDayForecast } from './api-requests';
-import expandIcon from './assets/expand-icon.svg';
-import './city.css';
+import Day from '../Day/Day';
 
-import Day from './day.js';
+import { fiveDayForecast } from '../../utils/fiveDayForecast';
+
+import expandIcon from '../../../assets/images/expand-icon.svg';
+
+import './City.css';
 
 class City extends Component {
   state = {
@@ -14,9 +16,12 @@ class City extends Component {
 
   async toggleDetail(key) {
     let { expanded, forecast } = this.state;
+
     if (!expanded) {
       forecast = await fiveDayForecast(key);
+      console.log(forecast)
     }
+
     this.setState({ forecast, expanded: !expanded });
   }
 
@@ -39,11 +44,13 @@ class City extends Component {
             </p>
           </div>
         </div>
+
         <div className="cityBody">
-          {expanded &&
-            forecast.consolidated_weather.map(v => (
-              <Day key={v.created} data={v} />
-            ))}
+          {
+            expanded && forecast.consolidated_weather.map(v => {
+              return <Day key={v.created} data={v} />
+            })
+          }
         </div>
       </div>
     );

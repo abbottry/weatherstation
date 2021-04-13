@@ -1,5 +1,6 @@
 import React from 'react';
-import './search.css';
+
+import './Search.css';
 
 const Search = ({ onSubmit, searching }) => {
   const placeholder = 'Search for a city';

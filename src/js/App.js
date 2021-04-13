@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { searchLocation } from './api-requests';
-import './App.css';
 
-import Search from './search';
-import City from './city';
+import City from './components/City/City';
+import Search from './components/Search/Search';
+
+import { searchLocation } from './utils/searchLocation';
+
+import './App.css';
 
 class App extends Component {
   state = {
@@ -17,23 +19,26 @@ class App extends Component {
 
   async newSearch(e) {
     document.activeElement.blur();
+
     e.preventDefault();
+
     this.setState({ searching: true });
+
     const searchString = e.target[0].value;
-    const { ok, cities } = await searchLocation(searchString);
-    if (ok) {
-      if (cities.length < 1) {
-        this.showMessage(
-          `Could not find any cities when searching for ${searchString}`
-        );
+
+    try {
+      const response = await searchLocation(searchString);
+
+      const { data: cities = [] } = response
+
+      if (cities.length === 0) {
+        this.showMessage(`Could not find any cities matching your request '${searchString}'`)
       } else {
-        this.setState({ cities, searching: false });
+        this.setState({ cities, searching: false })
       }
-    } else {
-      const errorMessage = `An error occurred while searching.
-      This is probably because of my restricted access to the weather data.
-      I'm only allowed 50 requests per day. Try again tomorrow!`;
-      this.showMessage(errorMessage, 15000);
+    } catch (e) {
+      console.error(e)
+      this.showMessage(e.toString(), 15000);
     }
   }
 
@@ -50,9 +55,16 @@ class App extends Component {
     return (
       <div className="app">
         <h2>Element84 Meta Weather Station</h2>
+
         <Search onSubmit={e => this.newSearch(e)} searching={searching} />
-        {info.show && <p className="tmpMessage">{info.message}</p>}
-        {cities.map(data => <City key={data.Key} data={data} />)}
+        {
+          info.show && (
+            <p className="tmpMessage">{info.message}</p>
+          )
+        }
+        {
+          cities.map(data => (<City key={data.woeid} data={data} />))
+        }
       </div>
     );
   }

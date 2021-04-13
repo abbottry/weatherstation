@@ -1,7 +1,8 @@
 import React from 'react';
 
-import './day.css';
-import { weatherStateIcon } from './api-requests';
+import { weatherStateIcon } from '../../utils/weatherStateIcon';
+
+import './Day.css';
 
 const Day = ({ data }) => {
   const date = new Date(data.applicable_date);
@@ -32,6 +33,7 @@ const Day = ({ data }) => {
 
         </div>
       </div>
+
       <p className="currentTemp"> {data.weather_state_name} </p>
       <p className="currentTemp"> <span className="data">Currently</span> {currentTemp}&deg;</p>
     </div>
